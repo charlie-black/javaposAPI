@@ -23,24 +23,25 @@ public class DbConnection {
 
 	public String readItems() {
 		JSONArray jaItems = new JSONArray();
-		String query = "SELECT category_id, category_name, item_id, item_name, item_tag, purchase_price, sale_price "
+		String query = "SELECT product_id, product_name, product_code, product_name, price,  "
 			+ "FROM vw_items";
    		try {
 			Statement stmt = conn.createStatement();
       		ResultSet rs = stmt.executeQuery(query);
       		while (rs.next()) {
 				JSONObject jItem = new JSONObject();
-        		jItem.put("category_id", rs.getString("category_id"));
-				jItem.put("category_name", rs.getString("category_name"));
-				jItem.put("item_id", rs.getString("item_id"));
-				jItem.put("item_name", rs.getString("item_name"));
+			jItem.put("id", rs.getString("product_id"));
+        		jItem.put("code", rs.getString("product_code"));
+				jItem.put("name", rs.getString("product_name"));
+				jItem.put("price", rs.getString("price"));
+				
 
 				jaItems.add(jItem);
         	}
     	} catch (SQLException ex) {
       		System.out.println("SQL DB Connection error : " + ex);
     	}
-
+               jItem.put("products", jaItems); 
 		return jaItems.toString();
 	}
 
