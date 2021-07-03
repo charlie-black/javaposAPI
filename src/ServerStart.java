@@ -17,7 +17,7 @@ public class ServerStart {
 
 	public void init() {
 		try {
-			server = HttpServer.create(new InetSocketAddress("localhost", 8001), 0);
+			server = HttpServer.create(new InetSocketAddress("localhost", 3000), 0);
 			server.createContext("/posapi", new Api());
 			server.start();
 
