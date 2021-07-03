@@ -21,7 +21,7 @@ public class ServerStart {
 			server.createContext("/posapi", new Api());
 			server.start();
 
-			System.out.println("Server started on port 8001");
+			System.out.println("Server started on port 3000");
 		} catch(IOException ex) {
 			System.out.println("IO Exception on web server " + ex);
 		}
